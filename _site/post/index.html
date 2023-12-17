@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="stylesheet" href="./style.min.css">
+</head>
+
+<body class="bg-gray-100 dark:bg-stone-800">
+<!--Navbar-->
+<nav x-data="{ isOpen: false }" class="bg-white shadow dark:bg-stone-900">
+        <div class="container px-5 py-4 mx-auto">
+            <div class="lg:flex lg:items-center">
+                <div class="flex items-center justify-between">
+                     <a href="#" class="mx-auto">
+                      <img class="w-auto h-10 sm:h-12 sm:w-auto" src="https://s6.imgcdn.dev/9IMB0.png" alt="logo UnpadSF">
+                     </a>
+           
+                     <!-- Mobile menu button -->
+                     <div class="flex lg:hidden">
+                      <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+                          <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+                          </svg>
+                     
+                          <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                      </button>
+                     </div>
+                 </div>
+           
+                 <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 flex-1 w-full px-6 py-4 transition-all duration-100 ease-in-out bg-white dark:bg-stone-900 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center lg:justify-between">
+                     <div class="flex flex-col text-gray-600 capitalize dark:text-gray-300 lg:flex lg:px-16 lg:-mx-1 lg:flex-row lg:items-center">
+                      <a href="https://unpadstreetfeeding.medium.com/" class="font-prsans mt-2 transition-colors duration-300 transform lg:mt-0 lg:mx-4 hover:text-gray-900 dark:hover:text-gray-200">Blog</a>
+                      <a href="#" class="font-prsans mt-2 transition-colors duration-300 transform lg:mt-0 lg:mx-4 hover:text-gray-900 dark:hover:text-gray-200">Volunteering</a>
+                      <a href="./about.html" class="font-prsans mt-2 transition-colors duration-300 transform lg:mt-0 lg:mx-4 hover:text-gray-900 dark:hover:text-gray-200">About Us</a>
+                     </div>
+                     <!--social icons-->
+                     <div class="flex justify-center mt-6 lg:flex lg:mt-0 lg:-mx-2">
+                      <a href="https://www.linkedin.com/company/unpad-street-feeding/" class="mx-2 text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300" aria-label="LinkedIn">
+                          <svg class="w-5 h-5 fill-current" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                            d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zM8.951 9.404H6.165V17.5H8.95V9.404zm6.841-.192c-1.324 0-1.993.629-2.385 1.156l-.127.181V9.403h-2.786l.01.484c.006.636.007 1.748.005 2.93l-.015 4.683h2.786v-4.522c0-.242.018-.484.092-.657.202-.483.66-.984 1.43-.984.955 0 1.367.666 1.408 1.662l.003.168V17.5H19v-4.643c0-2.487-1.375-3.645-3.208-3.645zM7.576 5.5C6.623 5.5 6 6.105 6 6.899c0 .73.536 1.325 1.378 1.392l.18.006c.971 0 1.577-.621 1.577-1.398C9.116 6.105 8.53 5.5 7.576 5.5z">
+                           </path>
+                          </svg>
+                      </a>
+                
+                      <a href="https://www.facebook.com/unpadstreetfeeding" class="mx-2 text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Facebook">
+                          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                            d="M2.00195 12.002C2.00312 16.9214 5.58036 21.1101 10.439 21.881V14.892H7.90195V12.002H10.442V9.80204C10.3284 8.75958 10.6845 7.72064 11.4136 6.96698C12.1427 6.21332 13.1693 5.82306 14.215 5.90204C14.9655 5.91417 15.7141 5.98101 16.455 6.10205V8.56104H15.191C14.7558 8.50405 14.3183 8.64777 14.0017 8.95171C13.6851 9.25566 13.5237 9.68693 13.563 10.124V12.002H16.334L15.891 14.893H13.563V21.881C18.8174 21.0506 22.502 16.2518 21.9475 10.9611C21.3929 5.67041 16.7932 1.73997 11.4808 2.01722C6.16831 2.29447 2.0028 6.68235 2.00195 12.002Z">
+                           </path>
+                          </svg>
+                      </a>
+                
+                      <a href="https://www.instagram.com/unpadstreetfeeding" class="mx-2 text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Instagram">
+                          <svg class="w-5 h-5 fill-current" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                            d="M12 0c6.6274 0 12 5.3726 12 12s-5.3726 12-12 12S0 18.6274 0 12 5.3726 0 12 0zm3.115 4.5h-6.23c-2.5536 0-4.281 1.6524-4.3805 4.1552L4.5 8.8851v6.1996c0 1.3004.4234 2.4193 1.2702 3.2359.7582.73 1.751 1.1212 2.8818 1.1734l.2633.006h6.1694c1.3004 0 2.389-.4234 3.1754-1.1794.762-.734 1.1817-1.7576 1.2343-2.948l.0056-.2577V8.8851c0-1.2702-.4234-2.3589-1.2097-3.1452-.7338-.762-1.7575-1.1817-2.9234-1.2343l-.252-.0056zM8.9152 5.8911h6.2299c.9072 0 1.6633.2722 2.2076.8166.4713.499.7647 1.1758.8103 1.9607l.0063.2167v6.2298c0 .9375-.3327 1.6936-.877 2.2077-.499.4713-1.176.7392-1.984.7806l-.2237.0057H8.9153c-.9072 0-1.6633-.2722-2.2076-.7863-.499-.499-.7693-1.1759-.8109-2.0073l-.0057-.2306V8.885c0-.9073.2722-1.6633.8166-2.2077.4712-.4713 1.1712-.7392 1.9834-.7806l.2242-.0057h6.2299-6.2299zM12 8.0988c-2.117 0-3.871 1.7238-3.871 3.871A3.8591 3.8591 0 0 0 12 15.8408c2.1472 0 3.871-1.7541 3.871-3.871 0-2.117-1.754-3.871-3.871-3.871zm0 1.3911c1.3609 0 2.4798 1.119 2.4798 2.4799 0 1.3608-1.119 2.4798-2.4798 2.4798-1.3609 0-2.4798-1.119-2.4798-2.4798 0-1.361 1.119-2.4799 2.4798-2.4799zm4.0222-2.3589a.877.877 0 1 0 0 1.754.877.877 0 0 0 0-1.754z">
+                           </path>
+                          </svg>
+                      </a>
+                     </div>
+                 </div>
+                </div>
+            </div>
+</nav>
+
+
+<!--Judul-->
+<div class="max-w-3xl px-4 lg:px-8 mx-auto pt-5">
+    <time datetime="2020-03-16" class="text-sm text-gray-500 dark:text-white">Mar 16, 2020</time>
+	<h2 class="font-prsans text-left mt-2 font-bold md:text-5xl text-3xl pb-1 dark:text-white tracking-wide md:leading-tight">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+	<div class="mx-auto">
+	    <span class="inline-block w-32 h-1 bg-amber-500 rounded-full"></span>
+	</div>
+</div>
+
+<!--Article-->
+<div class="bg-gray-100 dark:bg-stone-800 max-w-3xl px-4 pt-10 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
+    <div class="max-w-2xl dark:bg-stone-800">
+
+      <!-- Content -->
+      <div class="space-y-5 md:space-y-8 dark:bg-stone-800">
+        <div class="space-y-3">
+
+          <p class="text-lg text-gray-800 dark:text-gray-200">Universitas Padjadjaran Street Feeding Animal Freind (UnpadSF) is a charity initiative founded by senior students of Faculty of Medicine and Faculty of Mathematics and Natural Sciences in 2021 for homeless community cats & dogs and promoting responsible pet ownership among students. <br><br> 
+		  UnpadSF aims to:</p>
+        </div>
+
+		<ul class="list-disc list-outside space-y-2 pl-5 text-lg text-gray-800 dark:text-gray-200">
+			<li class="pl-2">Provide humane care for stray cats and dogs, ensuring a healthy environment.</li>
+			<li class="pl-2">Implement a Trap-Neuter-Return-Maintain (TNRM) program for population control.</li>
+			<li class="pl-2">Educate the community about the role of free roaming cats and dogs in the ecosystem.</li>
+		</ul>
+  
+        <p class="text-lg text-gray-800 dark:text-gray-200">
+		UnpadSF activities range from stray animal feeding, vaccination, rescues, Trap-Neuter-Return program, campaign, cat adoption programs & developing reflective collar as a product to promote pet safety. <br> <br>
+		We're proud to be a part of creating a more compassionate culture and to continue building a better world for both human & animals.
+		</p>
+  
+        <figure>
+          <img class="w-full object-cover rounded-xl" src="https://s6.imgcdn.dev/9pvdw.png" alt="Aktivitas tim UnpadSF, Theresia Melanie, Aidil Zaid, Mettika Settha Kurniawan">
+          <figcaption class="mt-3 text-sm text-center text-gray-500">
+            Team's Activities
+          </figcaption>
+        </figure>
+  
+        <p class="text-lg text-gray-800 dark:text-gray-200">UnpadSF is based in Universitas Padjadjaran Jatinangor campus, Sumedang, Indonesia. UnpadSF also promotes responsible pet cat & dog ownership and uses both English and Indonesian to reach a broader audience.</p>        
+  
+        <p class="text-lg text-gray-800 dark:text-gray-200">🇮🇩 : Unpad Street Feeding (UnpadSF) adalah perkumpulan yang didirikan pada tahun 2021 oleh sekelompok mahasiswa yang peduli terhadap hewan jalanan di kampus Universitas Padjadjaran. Kepedulian ini berbentuk pemberian pakan, obat, vitamin, sterilisasi, pengobatan & reflective collar. UnpadSF juga melakukan kampanye anti kekerasan hewan dan turut memberikan edukasi tentang kepemilikan hewan peliharaan yang bertanggung jawab untuk kalangan mahasiswa. UnpadSF hadir untuk mencapai tujuan berikut:</p>
+
+		<ul class="list-disc list-outside space-y-5 pl-5 text-lg text-gray-800 dark:text-gray-200 pb-6">
+			<li class="pl-2">Menyediakan perawatan dan lingkungan yang baik bagi kucing dan anjing jalanan;</li>
+			<li class="pl-2">Mengimplementasikan strategi kontrol populasi kucing jalanan dengan melakukan Trap-Neuter-Return-Maintain (TNRM);</li>
+			<li class="pl-2">Mengedukasi masyarakat kampus tentang kucing dan anjing jalanan.</li>
+		</ul>
+
+
+  
+        
+      </div>
+      <!-- End Content -->
+    </div>
+</div>
+<!-- End article -->
+  
+
+
+<!-- Footer -->
+<footer class="bg-white dark:bg-stone-900">
+	<div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
+	  <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+	    <div>
+	      <div class="flex justify-center h-24 sm:h-20 sm:justify-start" > 
+		   <img src="https://s6.imgcdn.dev/9IMB0.png" alt="logo UnpadSF">
+	      </div>
+
+		  <p class="mt-7 text-lg font-medium text-gray-900 dark:text-white text-center lg:text-left">About Us</p>
+     
+	      <p class="mt-6 max-w-lg lg:text-left text-center leading-relaxed text-gray-500 dark:text-gray-400">
+	      Universitas Padjadjaran Street Feeding Animal Friend (UnpadSF) or Peduli Hewan Jalanan Unpad is a charity initiative for the welfare of street animals. 
+	      </p>
+     
+	      <ul class="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
+		 <li>
+		   <a
+		     href="https://www.facebook.com/unpadstreetfeeding"
+		     rel="noreferrer"
+		     target="_blank"
+		     class="dark:text-amber-300 text-amber-300"
+		   >
+		     <span class="sr-only">Facebook</span>
+		     <svg
+			class="h-6 w-6"
+			fill="currentColor"
+			viewBox="0 0 24 24"
+			aria-hidden="true"
+		     >
+			<path
+			  fill-rule="evenodd"
+			  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+			  clip-rule="evenodd"
+			/>
+		     </svg>
+		   </a>
+		 </li>
+		 <!--instagram-->
+		 <li>
+		   <a
+		     href="https://www.instagram.com/unpadstreetfeeding"
+		     rel="noreferrer"
+		     target="_blank"
+		     class="dark:text-amber-300 text-amber-300"
+		   >
+		     <span class="sr-only">Instagram</span>
+		     <svg
+			class="h-6 w-6"
+			fill="currentColor"
+			viewBox="0 0 24 24"
+			aria-hidden="true"
+		     >
+			<path
+			  fill-rule="evenodd"
+			  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+			  clip-rule="evenodd"
+			/>
+		     </svg>
+		   </a>
+		 </li>
+		 <!--github-->
+		 <li>
+		   <a
+		     href="https://github.com/unpadsfresearch"
+		     rel="noreferrer"
+		     target="_blank"
+		     class="dark:text-amber-300 text-amber-300"
+		   >
+		     <span class="sr-only">GitHub</span>
+		     <svg
+			class="h-6 w-6"
+			fill="currentColor"
+			viewBox="0 0 24 24"
+			aria-hidden="true"
+		     >
+			<path
+			  fill-rule="evenodd"
+			  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+			  clip-rule="evenodd"
+			/>
+		     </svg>
+		   </a>
+		 </li>
+
+	      </ul>
+	    </div>
+     
+	    <div
+	      class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
+	      <div class="text-center sm:text-left">
+		 
+		
+	      <div class="mt-4 text-center sm:text-left">
+		 <p class="text-lg font-medium text-gray-900 dark:text-white">
+		   Contact Us
+		 </p>
+     
+		 <ul class="mt-3 space-y-4 text-sm">
+		   <li>
+		     <a class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+			href="mailto:unpadsf@duck.com">
+			<svg
+			  xmlns="http://www.w3.org/2000/svg"
+			  class="h-5 w-5 shrink-0 text-gray-900 dark:text-white"
+			  fill="none"
+			  viewBox="0 0 24 24"
+			  stroke="currentColor"
+			  stroke-width="2"
+			>
+			  <path
+			    stroke-linecap="round"
+			    stroke-linejoin="round"
+			    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+			  />
+			</svg>
+     
+			<span class="flex-1 text-gray-700 dark:text-gray-300">
+			  unpadsf@duck.com
+			</span>
+		     </a>
+		   </li>
+     
+		   <li
+		     class="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+		   >
+		     <svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="h-5 w-5 shrink-0 text-gray-900 dark:text-white"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke="currentColor"
+			stroke-width="2"
+		     >
+			<path
+			  stroke-linecap="round"
+			  stroke-linejoin="round"
+			  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+			/>
+			<path
+			  stroke-linecap="round"
+			  stroke-linejoin="round"
+			  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+			/>
+		     </svg>
+     
+		     <address
+			class="-mt-0.5 flex-1 not-italic text-gray-700 dark:text-gray-300"
+		     >
+			Universitas Padjadjaran, Sumedang, Indonesia
+		     </address>
+		   </li>
+		 </ul>
+	      </div>
+	    </div>
+	  </div>
+     
+	  <div class="mt-12 border-t border-gray-100 pt-6 dark:border-gray-800">
+	    <div class="text-left">
+		 <a class="inline-block text-amber-300"
+		   href="https://choosealicense.com/licenses/cc-by-4.0/">
+		   CC-BY-4.0 License
+		 </a>
+	      </p>
+
+	      <p
+		 class="mt-2 text-sm text-gray-500 dark:text-gray-400 sm:order-first sm:mt-0"
+	      >
+		  Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International license.
+	      </p>
+	    </div>
+	  </div>
+	</div>
+</footer>
+
+
+</body>
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://www.preline.co/assets/vendor/preline/preline.js"></script>
+</html>
